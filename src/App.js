@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.css'; 
 
-function App() {
+const SwapTextApp = () => {
+  const [input1, setInput1] = useState('');
+  const [input2, setInput2] = useState('');
+
+  const SwapToSecond = () => {
+    setInput2(input1);
+    setInput1('');
+  };
+
+  const SwapToFirst = () => {
+    setInput1(input2);
+    setInput2('');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main'>
+      <h1>डेटा का आदान प्रदान</h1>
+    <div className="app-container">
+      
+      <div className="input-container">
+      
+        <div className="input-box">
+        
+        <label htmlFor="input1">प्रथम</label>
+          <input
+          
+            type="text"
+            value={input1}
+            onChange={(e) => setInput1(e.target.value)}
+            placeholder="यहाँ इंद्राज करे"
+          />
+          <button className='btn1'onClick={SwapToSecond}>भेजे 2 में </button>
+        </div>
+        <div className="input-box">
+        <label htmlFor="input1">द्वितीय</label>
+          <input
+           
+            type="text"
+            value={input2}
+            onChange={(e) => setInput2(e.target.value)}
+            placeholder="यहाँ इंद्राज करे "
+          />
+          <button className='btn2'onClick={SwapToFirst}>भेजे 1 में </button>
+        </div>
+      </div>
+    </div>
     </div>
   );
-}
+};
 
-export default App;
+export default SwapTextApp;
